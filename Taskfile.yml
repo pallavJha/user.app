@@ -19,7 +19,7 @@ tasks:
   test:
     desc: Test Models
     cmds:
-      - gotest fasal.user/models -v -coverprofile cover.out -count=1 --test.config="./sqlboiler.toml"
+      - gotest user.app/models -v -coverprofile cover.out -count=1 --test.config="./sqlboiler.toml"
       - go tool cover -func cover.out
 
   proto:

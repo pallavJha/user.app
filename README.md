@@ -3,8 +3,16 @@
 This repo contains a simple go application that supports user login/signin, sign up, and the basic CRUD APIs related to a
 user model. I'll be using the term `user.app` to refer to this repository.
 
+Table of Contents:
+[Transport](#transport)
+[Database](#database)
+[Project Layout](#project-layout)
+[Start Up](#start-up)
+[Client](#client)
+[Setup](#setup)
+
 ##### Transport
-The transport used in this project is Protocol Buffers. The gRPC service created here is UserApp, located [here](https://github.com/pallavJha/user.app/blob/master/message/message.proto).
+The transport used in this project is Protocol Buffers. The gRPC service created here, UserApp, located [here](https://github.com/pallavJha/user.app/blob/master/message/message.proto).
 ```proto
 syntax = "proto3";
 package message;
@@ -81,7 +89,7 @@ Apart from that, it contains the following directories:
 ##### Tools and Libraries
 1. [Task](https://github.com/go-task/task) because I'm not using Makefile  
 2. [SQLBoiler](https://github.com/volatiletech/sqlboiler) ORM
-3. [Viper](https://github.com/spf13/cobra) 
+3. [Cobra](https://github.com/spf13/cobra) 
 4. [Viper](https://github.com/spf13/viper)
 
 Other packages can be found [here](https://github.com/pallavJha/user.app/blob/master/go.mod).
@@ -116,7 +124,7 @@ Available Commands:
   server      Run the userapp RPC service
 
 Flags:
-      --config string   Config file location (default "C:\\Users\\TheUser\\code\\fasal.user\\configs")
+      --config string   Config file location (default "C:\\Users\\TheUser\\code\\user.app\\configs")
   -h, --help            help for user.app
 
 Use "user.app [command] --help" for more information about a command.
@@ -133,7 +141,7 @@ Flags:
   -p, --port string   Port (default "9688")
 
 Global Flags:
-      --config string   Config file location (default "C:\\Users\\TheUser\\code\\fasal.user\\configs")
+      --config string   Config file location (default "C:\\Users\\TheUser\\code\\user.app\\configs")
 ```
 
 #### Client
@@ -141,6 +149,17 @@ Global Flags:
 You can use [Bloom RPC](https://github.com/uw-labs/bloomrpc) as the client for this gRPC service.
 
 ![Usage](https://github.com/pallavJha/user.app/blob/master/usage.gif?raw=true)
+
+#### Setup
+
+To run this you'll need to install:
+1. Go 1.13
+2. [Migrate](https://github.com/golang-migrate/migrate)
+3. [Task](https://github.com/go-task/task)
+4. [CockroachDB](https://www.cockroachlabs.com/docs/releases/v19.2.0.html)
+
+Execute `task migrate` to migrate the ddls to the database, and then execute `go run main.go server` to start the server. 
+
 
 
 
