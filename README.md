@@ -4,12 +4,12 @@ This repo contains a simple go application that supports user login/signin, sign
 user model. I'll be using the term `user.app` to refer to this repository.
 
 Table of Contents:
-[Transport](#transport)
-[Database](#database)
-[Project Layout](#project-layout)
-[Start Up](#start-up)
-[Client](#client)
-[Setup](#setup)
+- [Transport](#transport)
+- [Database](#database)
+- [Project Layout](#project-layout)
+- [Start Up](#start-up)
+- [Client](#client)
+- [Setup](#setup)
 
 ##### Transport
 The transport used in this project is Protocol Buffers. The gRPC service created here, UserApp, located [here](https://github.com/pallavJha/user.app/blob/master/message/message.proto).
