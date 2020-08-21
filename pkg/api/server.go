@@ -185,7 +185,7 @@ func (*Server) UpdateUser(ctx context.Context, req *message.UpdateUserRequest) (
 	return &message.Empty{}, err
 }
 
-func (*Server) DeleteUserRequest(ctx context.Context, _ *message.Empty) (*message.Empty, error) {
+func (*Server) DeleteUser(ctx context.Context, _ *message.Empty) (*message.Empty, error) {
 	userID, err := MDGetUserID(ctx)
 	if err != nil {
 		return nil, status.Error(codes.InvalidArgument, "userID is not present in the request")
