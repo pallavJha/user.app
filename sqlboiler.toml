@@ -1,0 +1,8 @@
+[crdb]
+user="root"
+pass=""
+host="127.0.0.1"
+port=26257
+dbname="userapp"
+sslmode="disable"
+blacklist=["schema_migrations", "schema_lock"]

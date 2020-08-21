@@ -1,0 +1,39 @@
+syntax = "proto3";
+package message;
+
+message AuthRequest {
+    string username = 1;
+    string email = 2;
+    string password = 3;
+}
+
+message AuthResponse {
+    string username = 1;
+    string token = 2;
+}
+
+message CreateUserRequest {
+    string username = 1;
+    string email = 2;
+    string password = 3;
+}
+
+message CreateUserResponse {
+    string user_id = 1;
+}
+
+message UpdateUserRequest {
+    string username = 2;
+    string email = 3;
+}
+
+message Empty {
+}
+
+service UserApp {
+    rpc SignIn (AuthRequest) returns (AuthResponse);
+    rpc SignOut (Empty) returns (Empty);
+    rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
+    rpc UpdateUser (UpdateUserRequest) returns (Empty);
+    rpc DeleteUser (Empty) returns (Empty);
+}

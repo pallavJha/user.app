@@ -1,0 +1,9 @@
+[crdb]
+user="root"
+password=""
+host="localhost"
+port=26257
+dbname="userapp"
+max_open_conns=200
+max_idle_conns=50
+conn_max_lifetime=5 #in minutes

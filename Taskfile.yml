@@ -1,0 +1,28 @@
+version: '2'
+
+vars:
+  pwd:
+    sh: pwd
+  default_config: "{{.pwd}}/sqlboiler.toml"
+
+tasks:
+  migrate:
+    desc: Migrate DDL to DB.
+    cmds:
+      - migrate -path migrations -database cockroach://root@127.0.0.1:26257/userapp?sslmode=disable up
+
+  generate:
+    desc: Generate models DB.
+    cmds:
+      - sqlboiler --wipe crdb  --config="./sqlboiler.toml"
+
+  test:
+    desc: Test Models
+    cmds:
+      - gotest fasal.user/models -v -coverprofile cover.out -count=1 --test.config="./sqlboiler.toml"
+      - go tool cover -func cover.out
+
+  proto:
+    desc: Compile protobuf to golang
+    cmds:
+      - protoc -I. ./message/message.proto --go_out=plugins=grpc,paths=source_relative:.
